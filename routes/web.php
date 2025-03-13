@@ -13,7 +13,7 @@ Route::get('/', function () {
     // if(auth()->check()) {
     //     $posts = auth()->user()->UserAllPosts()->latest()->get();
     // }
-    return view('home', ['posts' => $posts]);
+    return view('layout', ['posts' => $posts]);
 });
 
 
@@ -27,3 +27,27 @@ Route::post('/create-post', [PostController::class, 'createPost']);
 Route::get('/edit-post/{post}', [PostController::class, 'showEditPost']);
 Route::put('/edit-post/{post}', [PostController::class, 'updatePost']);
 Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
+
+
+Route::get('/create-post', function () {
+    return view('createpost');
+});
+
+
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+Route::get('/home', function () {
+    $posts = Post::all();
+
+    return view('home', ['posts' => $posts]);
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/register', function () {
+    return view('register');
+});
