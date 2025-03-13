@@ -6,13 +6,13 @@ use App\Http\Controllers\UserController;
 use App\Models\Post;
 
 Route::get('/', function () {
-    // $posts = Post::all();
+    $posts = Post::all();
     // $posts = Post::where('user_id', auth()->id())->get();
     // $posts = auth()->user()->UserAllPosts()->latest()->get();
-    $posts = [];
-    if(auth()->check()) {
-        $posts = auth()->user()->UserAllPosts()->latest()->get();
-    }
+    // $posts = [];
+    // if(auth()->check()) {
+    //     $posts = auth()->user()->UserAllPosts()->latest()->get();
+    // }
     return view('home', ['posts' => $posts]);
 });
 
